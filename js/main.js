@@ -6,23 +6,19 @@
  */ 
 
 document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // prevent form submission
-
-    // Collect form data
+    event.preventDefault(); 
     var form = event.target;
     var formData = new FormData(form);
 
-    // Create and configure XMLHttpRequest object
     var xhr = new XMLHttpRequest();
     xhr.open(form.method, form.action, true);
     xhr.setRequestHeader('Accept', 'application/json');
 
-    // Handle response from Formspree
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                // Display success message in modal popup
-                document.getElementById('myModal').classList.add("open-popup");
+                form.reset();
+				document.getElementById('myModal').classList.add("open-popup");
             } else {
 				document.getElementById('myModal').classList.add("open-popup");
 				document.getElementById('modalImage').src = "images/error.png";
@@ -33,8 +29,6 @@ document.getElementById('contactForm').addEventListener('submit', function(event
 			}
         }
     };
-
-    // Send form data to Formspree
     xhr.send(formData);
 });
 
