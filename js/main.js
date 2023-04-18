@@ -17,8 +17,14 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
+<<<<<<< HEAD
                 form.reset();
 				document.getElementById('myModal').classList.add("open-popup");
+=======
+                // Display success message in modal popup
+			form.reset();
+		    document.getElementById('myModal').classList.add("open-popup");
+>>>>>>> c8a5b8fef47260c63b980d7dda64b3c511e3bd51
             } else {
 				document.getElementById('myModal').classList.add("open-popup");
 				document.getElementById('modalImage').src = "images/error.png";
