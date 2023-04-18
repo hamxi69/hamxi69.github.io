@@ -22,7 +22,8 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 // Display success message in modal popup
-                document.getElementById('myModal').classList.add("open-popup");
+			form.reset();
+		    document.getElementById('myModal').classList.add("open-popup");
             } else {
 				document.getElementById('myModal').classList.add("open-popup");
 				document.getElementById('modalImage').src = "images/error.png";
