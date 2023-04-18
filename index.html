@@ -711,7 +711,26 @@
    <script src="js/jquery-2.1.3.min.js"></script>
    <script src="js/plugins.js"></script>
    <script src="js/main.js"></script>
-   
+   <script>
+	document.getElementById('contactForm').addEventListener('submit', function(event) {
+		event.preventDefault(); // prevent form submission
+	
+		// Show popup message on your portfolio page
+		var popup = document.createElement('div');
+		popup.className = 'popup';
+		var popupInner = document.createElement('div');
+		popupInner.className = 'popup-inner';
+		popupInner.innerHTML = '<span class="popup-close">&#x2716;</span><p>Thank you for your submission!</p>';
+		popup.appendChild(popupInner);
+		document.body.appendChild(popup);
+	
+		// Close popup when close button is clicked
+		var closeButton = document.querySelector('.popup-close');
+		closeButton.addEventListener('click', function() {
+			document.body.removeChild(popup);
+		});
+	});
+	</script>
 </body>
 
 </html>
