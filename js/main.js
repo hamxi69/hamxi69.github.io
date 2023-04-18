@@ -5,6 +5,43 @@
  * ------------------------------------------------------------------- 
  */ 
 
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent form submission
+
+    // Collect form data
+    var form = event.target;
+    var formData = new FormData(form);
+
+    // Create and configure XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action, true);
+    xhr.setRequestHeader('Accept', 'application/json');
+
+    // Handle response from Formspree
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Display success message in modal popup
+                document.getElementById('myModal').classList.add("open-popup");
+            } else {
+				document.getElementById('myModal').classList.add("open-popup");
+				document.getElementById('modalImage').src = "images/error.png";
+				document.getElementById('sorry').textContent = "Sorry";
+				document.getElementById('modalMessage').textContent = 'Error submitting form. Please try again later.';
+				document.getElementById('okButton').style.backgroundColor = 'red';
+
+			}
+        }
+    };
+
+    // Send form data to Formspree
+    xhr.send(formData);
+});
+
+document.getElementById('okButton').addEventListener('click', function(event) {
+	document.getElementById('myModal').classList.remove("open-popup");
+});
+
 (function($) {
 
 	"use strict";
